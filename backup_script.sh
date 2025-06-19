@@ -2,6 +2,8 @@
 
 SOURCE_DIR="$1"
 BACKUP_DIR="$HOME/backups"
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+BACKUP_NAME="backup_$TIMESTAMP.tar.gz"
 
 if [ -z "$SOURCE_DIR" ]; then
   echo "שגיאה: נא לציין נתיב לתיקייה לגיבוי."
@@ -19,3 +21,6 @@ if [ ! -r "$SOURCE_DIR" ]; then
 fi
 
 mkdir -p "$BACKUP_DIR"
+
+tar -czf "$BACKUP_DIR/$BACKUP_NAME" -C "$(dirname "$SOURCE_DIR")" "$(basename "$SOURCE_DIR")"
+echo "✅ גיבוי נוצר: $BACKUP_NAME"
