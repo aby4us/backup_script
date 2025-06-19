@@ -17,3 +17,5 @@ if [ ! -r "$SOURCE_DIR" ]; then
   echo "שגיאה: אין הרשאות קריאה לתיקייה '$SOURCE_DIR'."
   exit 1
 fi
+
+mkdir -p "$BACKUP_DIR"
